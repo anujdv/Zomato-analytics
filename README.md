@@ -7,6 +7,7 @@ This project analyzes restaurant performance across the Zomato marketplace using
 The objective is to understand how pricing, customer engagement, and platform features such as online delivery relate to restaurant ratings and customer perception.
 
 The analysis focuses on identifying marketplace patterns that can support product, operational, and growth decisions.
+
 ---
 
 # Dashboard Preview
@@ -45,7 +46,7 @@ This project investigates:
 
 ## Dataset Overview
 
-**Source:** Kaggle — Zomato Global Restaurant Dataset
+**Source:** [Global Zomato Dataset (Kaggle)](https://www.kaggle.com/datasets/harishkumardatalab/global-zomato-dataset)
 
 **Records:** ~50,000 restaurants
 
@@ -67,6 +68,12 @@ This project investigates:
 * Has Online Delivery
 * Has Table Booking
 
+### Dataset Notes
+
+The dataset contains restaurant-level information across multiple countries, including pricing, ratings, customer engagement metrics, cuisine information, and operational features such as online delivery and table booking availability.
+
+For analytical consistency, pricing comparisons across countries were performed using the normalized `price_range` field rather than raw currency values.
+
 ---
 
 ## Data Modeling Approach
@@ -85,17 +92,17 @@ Cleaned analytical layer used for all reporting and dashboarding.
 
 Additional analytical fields were created:
 
-* **Price Segment**
+#### Price Segment
 
-  * Low
-  * Mid
-  * High
+* Low
+* Mid
+* High
 
-* **Engagement Level**
+#### Engagement Level
 
-  * Low
-  * Medium
-  * High
+* Low
+* Medium
+* High
 
 All transformations were performed using SQL.
 
@@ -106,28 +113,23 @@ All transformations were performed using SQL.
 * SQL (PostgreSQL)
 * Power BI
 * GitHub
-* Notion
 
 ---
 
 ## Business Questions
 
-### 1. Do restaurants with online delivery receive higher ratings?
+1. Do restaurants with online delivery receive higher ratings?
+2. Does higher price imply better ratings?
+3. Are high-vote restaurants genuinely better rated?
+4. Is the price-rating relationship consistent across cities?
+5. Do premium restaurants provide more consistent customer experiences?
+6. Which cities offer the strongest rating-to-price balance?
 
-### 2. Does higher price imply better ratings?
-
-### 3. Are high-vote restaurants genuinely better rated?
-
-### 4. Is the price-rating relationship consistent across cities?
-
-### 5. Do premium restaurants provide more consistent customer experiences?
-
-### 6. Which cities offer the strongest rating-to-price balance?
-
+----
 
 # Key Findings
 
-## 1️⃣ Online Delivery is Associated with Higher Ratings
+## 1. Online Delivery is Associated with Higher Ratings
 
 | Delivery Availability | Average Rating |
 | --------------------- | -------------- |
@@ -146,7 +148,7 @@ The relationship may reflect selection bias, as more established restaurants are
 
 ---
 
-## 2️⃣ Higher-Priced Restaurants Receive Better Ratings
+## 2. Higher-Priced Restaurants Receive Better Ratings
 
 | Price Segment | Average Rating |
 | ------------- | -------------- |
@@ -166,7 +168,7 @@ Price may act as a proxy for service quality, ambiance, brand reputation, or loc
 
 ---
 
-## 3️⃣ Premium Restaurants Deliver More Consistent Experiences
+## 3. Premium Restaurants Deliver More Consistent Experiences
 
 | Price Segment | Avg Rating | Rating Std Dev |
 | ------------- | ---------- | -------------- |
@@ -186,7 +188,7 @@ Price appears to function as both a quality signal and a consistency signal with
 
 ---
 
-## 4️⃣ Engagement Differences Are Largely Driven by Review Volume
+## 4. Engagement Differences Are Largely Driven by Review Volume
 
 | Engagement Level | Avg Rating | Restaurants | Reviews |
 | ---------------- | ---------- | ----------- | ------- |
@@ -210,7 +212,7 @@ Further analysis revealed that these restaurants receive very few reviews, makin
 
 ---
 
-## 5️⃣ Price-Rating Relationship is Consistent Across Cities
+## 5. Price-Rating Relationship is Consistent Across Cities
 
 Analysis across:
 
@@ -221,19 +223,17 @@ Analysis across:
 
 shows ratings consistently increase as price segments rise.
 
-### Interpretation
-
-The relationship is not isolated to a single market and appears to reflect broader marketplace behavior.
-
 ### Correlation Analysis
 
 ```sql
 SELECT
-    CORR(price_range, aggregate_rating)
+    CORR(price_range, aggregate_rating) AS price_rating_correlation
 FROM zomato_analytics;
 ```
 
 **Result:** 0.44
+
+### Interpretation
 
 A moderate positive correlation exists between pricing and customer ratings.
 
@@ -298,10 +298,10 @@ zomato-analytics/
 │   └── zomato_analytics.pbix
 │
 └── screenshots/
-    ├── executive_summary.jpg
-    ├── pricing_analysis.jpg
-    ├── engagement_analysis.jpg
-    └── delivery_analysis.jpg
+    ├── zomato_analytics_report_page-0001.jpg
+    ├── zomato_analytics_report_page-0002.jpg
+    ├── zomato_analytics_report_page-0003.jpg
+    └── zomato_analytics_report_page-0004.jpg
 ```
 
 ---
@@ -328,15 +328,14 @@ A deeper investigation into engagement metrics revealed that review volume plays
 
 # Author
 
-**Anuj Verma**
+**Dasamantharao Venkat Anuj**
 
-Data Analytics Portfolio Project
-
-**Skills Demonstrated**
+### Skills Demonstrated
 
 * SQL Analytics
 * Data Modeling
 * Feature Engineering
+* Data Cleaning
 * Business Intelligence
 * Power BI Dashboarding
 * Data Storytelling
