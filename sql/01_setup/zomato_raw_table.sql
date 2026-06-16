@@ -1,0 +1,23 @@
+CREATE TABLE zomato_raw (
+  "Restaurant ID" BIGINT,
+  "Restaurant Name" TEXT,
+  "Country Code" INT,
+  "City" TEXT,
+  "Address" TEXT,
+  "Locality" TEXT,
+  "Locality Verbose" TEXT,
+  "Longitude" NUMERIC,
+  "Latitude" NUMERIC,
+  "Cuisines" TEXT,
+  "Average Cost for two" NUMERIC,
+  "Currency" TEXT,
+  "Has Table booking" TEXT,
+  "Has Online delivery" TEXT,
+  "Is delivering now" TEXT,
+  "Switch to order menu" TEXT,
+  "Price range" INT,
+  "Aggregate rating" NUMERIC,
+  "Rating color" TEXT,
+  "Rating text" TEXT,
+  "Votes" INT
+);
