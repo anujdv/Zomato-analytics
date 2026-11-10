@@ -48,7 +48,7 @@ This project investigates:
 
 **Source:** [Global Zomato Dataset (Kaggle)](https://www.kaggle.com/datasets/harishkumardatalab/global-zomato-dataset)
 
-**Records:** ~50,000 restaurants
+**Records:** ~10,000 restaurants
 
 **Scope:** Multiple countries and cities
 
